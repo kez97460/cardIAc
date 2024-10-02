@@ -37,7 +37,7 @@
         }
     },
     "activations_alignment": 4,
-    "arguments": "generate --target stm32l4 --name pca_cardiac -m C:/Users/Lenovo/Documents/Git_repos/cardIAc/neural_network/Notebooks_Kez/MLP_cardIAc_seq.tflite --compression lossless --verbosity 1 --allocate-inputs --allocate-outputs --workspace C:/Users/Lenovo/AppData/Local/Temp/mxAI_workspace68299926394500014354860788815396125 --output C:/Users/Lenovo/.stm32cubemx/pca_cardiac_output",
+    "arguments": "generate --target stm32l4 --name pca_cardiac -m C:/Users/Lenovo/Documents/Git_repos/cardIAc/neural_network/Notebooks_Kez/MLP_cardIAc_seq.tflite --compression lossless --verbosity 1 --allocate-inputs --allocate-outputs --workspace C:/Users/Lenovo/AppData/Local/Temp/mxAI_workspace68872261087750012573475018038080088 --output C:/Users/Lenovo/.stm32cubemx/pca_cardiac_output",
     "c_activations_count": 1,
     "c_arrays": [
         {
@@ -407,7 +407,7 @@
         ]
     },
     "data_alignment": 4,
-    "date_time": "Wed Oct  2 14:38:18 2024",
+    "date_time": "Wed Oct  2 16:13:44 2024",
     "inputs": [
         "serving_default_input_layer_100_output"
     ],

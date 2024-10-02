@@ -1,6 +1,6 @@
 STEdgeAI Core v9.0.0-19802
-Created date          : 2024-10-02 14:38:18
-Parameters            : generate --target stm32l4 --name pca_cardiac -m C:/Users/Lenovo/Documents/Git_repos/cardIAc/neural_network/Notebooks_Kez/MLP_cardIAc_seq.tflite --compression lossless --verbosity 1 --allocate-inputs --allocate-outputs --workspace C:/Users/Lenovo/AppData/Local/Temp/mxAI_workspace68299926394500014354860788815396125 --output C:/Users/Lenovo/.stm32cubemx/pca_cardiac_output
+Created date          : 2024-10-02 16:13:44
+Parameters            : generate --target stm32l4 --name pca_cardiac -m C:/Users/Lenovo/Documents/Git_repos/cardIAc/neural_network/Notebooks_Kez/MLP_cardIAc_seq.tflite --compression lossless --verbosity 1 --allocate-inputs --allocate-outputs --workspace C:/Users/Lenovo/AppData/Local/Temp/mxAI_workspace68872261087750012573475018038080088 --output C:/Users/Lenovo/.stm32cubemx/pca_cardiac_output
 
 Exec/report summary (generate)
 -------------------------------------------------------------------------------------------------------------------------
@@ -11,7 +11,7 @@ compression        :   lossless
 options            :   allocate-inputs, allocate-outputs                                                                 
 optimization       :   balanced                                                                                          
 target/series      :   stm32l4                                                                                           
-workspace dir      :   C:\Users\Lenovo\AppData\Local\Temp\mxAI_workspace68299926394500014354860788815396125              
+workspace dir      :   C:\Users\Lenovo\AppData\Local\Temp\mxAI_workspace68872261087750012573475018038080088              
 output dir         :   C:\Users\Lenovo\.stm32cubemx\pca_cardiac_output                                                   
 model_fmt          :   float                                                                                             
 model_name         :   MLP_cardIAc_seq                                                                                   

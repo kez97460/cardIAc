@@ -45,12 +45,22 @@
      PH13   ------> TIM8_CH1N
      PH9   ------> OCTOSPIM_P2_IO4
      PG10   ------> OCTOSPIM_P2_IO7
+     PD2   ------> SDMMC1_CMD
+     PC10   ------> SDMMC1_D2
      PI4   ------> DCMI_D5
+     PA10   ------> USB_OTG_FS_ID
+     PA12   ------> USB_OTG_FS_DP
+     PC11   ------> SDMMC1_D3
      PI5   ------> DCMI_VSYNC
+     PA9   ------> USB_OTG_FS_VBUS
+     PA11   ------> USB_OTG_FS_DM
      PG12   ------> OCTOSPIM_P2_NCS
+     PC12   ------> SDMMC1_CK
+     PC8   ------> SDMMC1_D0
      PG8   ------> I2C3_SDA
      PG7   ------> I2C3_SCL
      PC7   ------> S_DATAIN3DFSDM1
+     PC9   ------> SDMMC1_D1
      PC0   ------> LPUART1_RX
      PC1   ------> LPUART1_TX
      PC2   ------> S_CKOUTDFSDM1
@@ -168,11 +178,43 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOH, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PtPin */
+  GPIO_InitStruct.Pin = uSD_CMD_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF12_SDMMC1;
+  HAL_GPIO_Init(uSD_CMD_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PCPin PCPin PCPin PCPin
+                           PCPin */
+  GPIO_InitStruct.Pin = uSD_D2_Pin|uSD_D3_Pin|uSD_CLK_Pin|uSD_D0_Pin
+                          |uSD_D1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF12_SDMMC1;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PAPin PAPin PAPin */
+  GPIO_InitStruct.Pin = USB_OTGFS_ID_Pin|USB_OTG_FS_DP_Pin|USB_OTGFS_DM_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF10_OTG_FS;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PtPin */
   GPIO_InitStruct.Pin = JOY_SEL_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(JOY_SEL_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PtPin */
+  GPIO_InitStruct.Pin = USB_OTGFS_VBUS_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(USB_OTGFS_VBUS_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PGPin PGPin */
   GPIO_InitStruct.Pin = ARD_14_Pin|ARD_15_Pin;

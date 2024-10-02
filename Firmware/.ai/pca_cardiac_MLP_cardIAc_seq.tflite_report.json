@@ -1,7 +1,7 @@
 {
     "_allocate_inputs": 4,
     "_allocate_outputs": 4,
-    "cli_parameters": "generate --target stm32l4 --name pca_cardiac -m C:/Users/Lenovo/Documents/Git_repos/cardIAc/neural_network/Notebooks_Kez/MLP_cardIAc_seq.tflite --compression lossless --verbosity 1 --allocate-inputs --allocate-outputs --workspace C:/Users/Lenovo/AppData/Local/Temp/mxAI_workspace68299926394500014354860788815396125 --output C:/Users/Lenovo/.stm32cubemx/pca_cardiac_output",
+    "cli_parameters": "generate --target stm32l4 --name pca_cardiac -m C:/Users/Lenovo/Documents/Git_repos/cardIAc/neural_network/Notebooks_Kez/MLP_cardIAc_seq.tflite --compression lossless --verbosity 1 --allocate-inputs --allocate-outputs --workspace C:/Users/Lenovo/AppData/Local/Temp/mxAI_workspace68872261087750012573475018038080088 --output C:/Users/Lenovo/.stm32cubemx/pca_cardiac_output",
     "cli_version": {
         "extra": "19802",
         "major": 9,
@@ -11,7 +11,7 @@
     "cli_version_str": "9.0.0-19802",
     "code_size": 0,
     "compression": [],
-    "date_time": "Wed Oct  2 14:38:18 2024",
+    "date_time": "Wed Oct  2 16:13:44 2024",
     "error": 0,
     "error_str": [],
     "exec_cmd": "generate",

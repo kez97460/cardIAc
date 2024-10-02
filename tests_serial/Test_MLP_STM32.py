@@ -45,7 +45,7 @@ if __name__ == '__main__':
         print("Synchronised")
 
         print("Evaluating model on STM32...")
-        accuracy = 0
+        correct_guesses = 0
         for i in range(iterations):
             print(f"----- Iteration {i+1} -----")
             time.sleep(0.1)
@@ -53,7 +53,8 @@ if __name__ == '__main__':
             time.sleep(0.1)
             output = outputsToInt(ser.read(NUM_CLASSES))
             if (np.argmax(output) == np.argmax(Y_test[i])):
-                accuracy += 1 / iterations
+                correct_guesses += 1
+                accuracy = correct_guesses / (i+1)
             print(f"   Expected output: {Y_test[i]}")
             print(f"   Received output: {output}")
             print(f"----------------------- Accuracy: {accuracy:.2f}\n")

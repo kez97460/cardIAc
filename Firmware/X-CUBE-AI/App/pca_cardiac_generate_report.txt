@@ -1,0 +1,140 @@
+STEdgeAI Core v9.0.0-19802
+Created date          : 2024-10-02 14:38:18
+Parameters            : generate --target stm32l4 --name pca_cardiac -m C:/Users/Lenovo/Documents/Git_repos/cardIAc/neural_network/Notebooks_Kez/MLP_cardIAc_seq.tflite --compression lossless --verbosity 1 --allocate-inputs --allocate-outputs --workspace C:/Users/Lenovo/AppData/Local/Temp/mxAI_workspace68299926394500014354860788815396125 --output C:/Users/Lenovo/.stm32cubemx/pca_cardiac_output
+
+Exec/report summary (generate)
+-------------------------------------------------------------------------------------------------------------------------
+model file         :   C:\Users\Lenovo\Documents\Git_repos\cardIAc\neural_network\Notebooks_Kez\MLP_cardIAc_seq.tflite   
+type               :   tflite                                                                                            
+c_name             :   pca_cardiac                                                                                       
+compression        :   lossless                                                                                          
+options            :   allocate-inputs, allocate-outputs                                                                 
+optimization       :   balanced                                                                                          
+target/series      :   stm32l4                                                                                           
+workspace dir      :   C:\Users\Lenovo\AppData\Local\Temp\mxAI_workspace68299926394500014354860788815396125              
+output dir         :   C:\Users\Lenovo\.stm32cubemx\pca_cardiac_output                                                   
+model_fmt          :   float                                                                                             
+model_name         :   MLP_cardIAc_seq                                                                                   
+model_hash         :   0x6c1c1dcbf685817009bba5f66bdb5545                                                                
+params #           :   1,029 items (4.02 KiB)                                                                            
+-------------------------------------------------------------------------------------------------------------------------
+input 1/1          :   'serving_default_input_layer_100', f32(1x10), 40 Bytes, activations                               
+output 1/1         :   'nl_2', f32(1x5), 20 Bytes, activations                                                           
+macc               :   1,168                                                                                             
+weights (ro)       :   4,116 B (4.02 KiB) (1 segment)                                                                    
+activations (rw)   :   296 B (296 B) (1 segment) *                                                                       
+ram (total)        :   296 B (296 B) = 296 + 0 + 0                                                                       
+-------------------------------------------------------------------------------------------------------------------------
+(*) 'input'/'output' buffers can be used from the activations buffer
+
+Model name - MLP_cardIAc_seq
+------ -------------------------------------------------------------- ------------- ------------ ------ ---------------------------------------------- --- ----------------- --------------- ---------------------------- 
+m_id   layer (type,original)                                          oshape        param/size     macc                                   connected to   | c_size            c_macc          c_type                       
+------ -------------------------------------------------------------- ------------- ------------ ------ ---------------------------------------------- --- ----------------- --------------- ---------------------------- 
+0      serving_default_input_layer_100 (Input, )                      [b:1,c:10]                                                                         | +2,816(+100.0%)   +768(+100.0%)   Dense_/Nonlinearity_[0, 1]   
+       sequential_5_1_dense_26_1_MatMul (Placeholder, )               [h:64,c:10]   640/2,560                                                            | -2,560(-100.0%)                   
+       sequential_5_1_dense_26_1_Add_ReadVariableOp (Placeholder, )   [c:64]        64/256                                                               | -256(-100.0%)                     
+       gemm_0 (Gemm, FULLY_CONNECTED)                                 [b:1,c:64]                    704                serving_default_input_layer_100   |                   -704(-100.0%)   
+                                                                                                                      sequential_5_1_dense_26_1_MatMul   | 
+                                                                                                          sequential_5_1_dense_26_1_Add_ReadVariableOp   | 
+       nl_0_nl (Nonlinearity, FULLY_CONNECTED)                        [b:1,c:64]                     64                                         gemm_0   |                   -64(-100.0%)    
+------ -------------------------------------------------------------- ------------- ------------ ------ ---------------------------------------------- --- ----------------- --------------- ---------------------------- 
+1      arith_constant (Placeholder, )                                 [h:5,c:64]    320/1,280                                                            | +20(+1.6%)        +325(+100.0%)   Dense_[2]                    
+       arith_constant1 (Placeholder, )                                [c:5]         5/20                                                                 | -20(-100.0%)                      
+       gemm_1 (Gemm, FULLY_CONNECTED)                                 [b:1,c:5]                     325                                        nl_0_nl   |                   -325(-100.0%)   
+                                                                                                                                        arith_constant   | 
+                                                                                                                                       arith_constant1   | 
+------ -------------------------------------------------------------- ------------- ------------ ------ ---------------------------------------------- --- ----------------- --------------- ---------------------------- 
+2      nl_2 (Nonlinearity, SOFTMAX)                                   [b:1,c:5]                      75                                         gemm_1   |                                   Nonlinearity_[o][3]          
+------ -------------------------------------------------------------- ------------- ------------ ------ ---------------------------------------------- --- ----------------- --------------- ---------------------------- 
+model/c-model: macc=1,168/1,168  weights=4,116/4,116  activations=--/296 io=--/0
+
+
+
+Generated C-graph summary
+------------------------------------------------------------------------------------------------------------------------
+model name            : MLP_cardIAc_seq
+c-name                : pca_cardiac
+c-node #              : 4
+c-array #             : 9
+activations size      : 296 (1 segment)
+weights size          : 4116 (1 segment)
+macc                  : 1168
+inputs                : ['serving_default_input_layer_100_output']
+outputs               : ['nl_2_output']
+
+C-Arrays (9)
+------ ---------------------------------------- ----------- ------------------------- ------------- --------- 
+c_id   name (*_array)                           item/size   domain/mem-pool           c-type        comment   
+------ ---------------------------------------- ----------- ------------------------- ------------- --------- 
+0      gemm_0_bias                              64/256      weights/weights           const float             
+1      gemm_0_output                            64/256      activations/**default**   float                   
+2      gemm_0_weights                           640/2560    weights/weights           const float             
+3      gemm_1_bias                              5/20        weights/weights           const float             
+4      gemm_1_output                            5/20        activations/**default**   float                   
+5      gemm_1_weights                           320/1280    weights/weights           const float             
+6      nl_0_nl_output                           64/256      activations/**default**   float                   
+7      nl_2_output                              5/20        activations/**default**   float         /output   
+8      serving_default_input_layer_100_output   10/40       activations/**default**   float         /input    
+------ ---------------------------------------- ----------- ------------------------- ------------- --------- 
+
+C-Layers (4)
+------ ---------------- ---- --------------- ------ ------ ------------------------------------------- ------------------ 
+c_id   name (*_layer)   id   layer_type      macc   rom    tensors                                     shape (array id)   
+------ ---------------- ---- --------------- ------ ------ ------------------------------------------- ------------------ 
+0      gemm_0           0    Dense           704    2816   I: serving_default_input_layer_100_output   f32(1x10) (8)      
+                                                           W: gemm_0_weights                           f32(64x10) (2)     
+                                                           W: gemm_0_bias                              f32(64) (0)        
+                                                           O: gemm_0_output                            f32(1x64) (1)      
+------ ---------------- ---- --------------- ------ ------ ------------------------------------------- ------------------ 
+1      nl_0_nl          0    Nonlinearity    64     0      I: gemm_0_output                            f32(1x64) (1)      
+                                                           O: nl_0_nl_output                           f32(1x64) (6)      
+------ ---------------- ---- --------------- ------ ------ ------------------------------------------- ------------------ 
+2      gemm_1           1    Dense           325    1300   I: nl_0_nl_output                           f32(1x64) (6)      
+                                                           W: gemm_1_weights                           f32(5x64) (5)      
+                                                           W: gemm_1_bias                              f32(5) (3)         
+                                                           O: gemm_1_output                            f32(1x5) (4)       
+------ ---------------- ---- --------------- ------ ------ ------------------------------------------- ------------------ 
+3      nl_2             2    Nonlinearity    75     0      I: gemm_1_output                            f32(1x5) (4)       
+                                                           O: nl_2_output                              f32(1x5) (7)       
+------ ---------------- ---- --------------- ------ ------ ------------------------------------------- ------------------ 
+
+
+
+Number of operations per c-layer
+------- ------ ------------------------ ------- -------------- 
+c_id    m_id   name (type)                  #op           type 
+------- ------ ------------------------ ------- -------------- 
+0       0      gemm_0 (Dense)               704   smul_f32_f32 
+1       0      nl_0_nl (Nonlinearity)        64     op_f32_f32 
+2       1      gemm_1 (Dense)               325   smul_f32_f32 
+3       2      nl_2 (Nonlinearity)           75     op_f32_f32 
+------- ------ ------------------------ ------- -------------- 
+total                                     1,168 
+
+Number of operation types
+---------------- ------- ----------- 
+operation type         #           % 
+---------------- ------- ----------- 
+smul_f32_f32       1,029       88.1% 
+op_f32_f32           139       11.9% 
+
+Complexity report (model)
+------ --------------------------------- ------------------------- ------------------------- -------- 
+m_id   name                              c_macc                    c_rom                     c_id     
+------ --------------------------------- ------------------------- ------------------------- -------- 
+0      serving_default_input_layer_100   ||||||||||||||||  65.8%   ||||||||||||||||  68.4%   [0, 1]   
+1      arith_constant                    |||||||           27.8%   |||||||           31.6%   [2]      
+2      nl_2                              ||                 6.4%   |                  0.0%   [3]      
+------ --------------------------------- ------------------------- ------------------------- -------- 
+macc=1,168 weights=4,116 act=296 ram_io=0
+
+Generated files (7)
+--------------------------------------------------------------------------- 
+C:\Users\Lenovo\.stm32cubemx\pca_cardiac_output\pca_cardiac_data_params.h   
+C:\Users\Lenovo\.stm32cubemx\pca_cardiac_output\pca_cardiac_data_params.c   
+C:\Users\Lenovo\.stm32cubemx\pca_cardiac_output\pca_cardiac_data.h          
+C:\Users\Lenovo\.stm32cubemx\pca_cardiac_output\pca_cardiac_data.c          
+C:\Users\Lenovo\.stm32cubemx\pca_cardiac_output\pca_cardiac_config.h        
+C:\Users\Lenovo\.stm32cubemx\pca_cardiac_output\pca_cardiac.h               
+C:\Users\Lenovo\.stm32cubemx\pca_cardiac_output\pca_cardiac.c               

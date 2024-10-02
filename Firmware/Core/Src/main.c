@@ -26,6 +26,7 @@
 #include "usb_otg.h"
 #include "gpio.h"
 #include "fmc.h"
+#include "app_x-cube-ai.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -96,11 +97,12 @@ int main(void)
   MX_FMC_Init();
   MX_I2C1_Init();
   MX_SAI1_Init();
-  MX_SDMMC1_SD_Init();
+  // MX_SDMMC1_SD_Init();
   MX_SPI2_Init();
   MX_USART2_UART_Init();
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_PCD_Init();
+  MX_X_CUBE_AI_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -111,6 +113,7 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
+  MX_X_CUBE_AI_Process();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

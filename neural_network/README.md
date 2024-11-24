@@ -6,20 +6,24 @@ L'objectif du projet étant d'implémenter un modèle d'intelligence artificiell
 
 Notre dataset, basé sur l'article ***"[A lightweight convolutional neural network hardware implementation for wearable heart rate anomaly detection](./dataset_publications/ECGClassification1.pdf)"*** de Minghong Gu, Yuejun Zhang, Yongzhong Wen, Guangpeng Ai, Huihong Zhang, Pengjun Wang et Guoqing Wang, est donc composé de **5000** signaux à **1 dimension** labellisés. Ces derniers sont des électrocardiogrammes classés selon les **5** pathologies suivantes :
 
+<div align="center">
+
 **"A"** : contraction prématurée de l'oreillette  
-    *971 échantillons dans le dataset*
+*971 échantillons dans le dataset*
 
 **"L"** : fluctuation du bloc de branche gauche  
-    *995 échantillons dans le dataset*
+*995 échantillons dans le dataset*
 
 **"N"** : normal (sans pathologie)  
-    *1038 échantillons dans le dataset*
+*1038 échantillons dans le dataset*
 
 **"R"** : fluctuation du bloc de branche droit  
-    *1029 échantillons dans le dataset*
+*1029 échantillons dans le dataset*
 
 **"V"** : contraction ventriculaire prématurée  
-    *967 échantillons dans le dataset*
+*967 échantillons dans le dataset*
+
+</div>
 
 Nous avons donc un dataset presque équilibré, ce qui favorise un bon apprentissage de notre modèle en évitant au maximum les biais d'entraînement.
 
@@ -41,7 +45,7 @@ Le modèle CNN ajoute des couches convolutives par rapport à un modèle MLP, pe
 
 Notre modèle est identique à celui décrit dans l'article de recherche d'où provient notre dataset ([cliquez ici](./dataset_publications/ECGClassification1.pdf)), à l'exception d'une couche dense cachée de 32 neurones ajoutée après les couches de convolutions.
 
-Cela nous permet d'obtenir un modèle atteignant une précision de **94,80 %** sur le set de validation, ce qui est inférieur au modèle MLP. Cependant, ce dernier est bien plus léger : de **16133 paramètres**, nous passons à **2033 paramètres**. Bien que dans notre cas, notre modèle soit très léger et notre carte surdimensionnée, cette légèreté est très pertinente pour le temps d'inférence ainsi que pour la portabilité sur des microcontrôleurs moins puissants (et donc moins chers). C'est donc ce modèle que nous porterons sur la carte STM32 dans une logique d'optimisation.
+Cela nous permet d'obtenir un modèle atteignant une précision de **94,80 %** sur le set de validation, ce qui est inférieur au modèle MLP. Cependant, ce dernier est bien plus léger : de **16133 paramètres**, nous passons à **2033 paramètres**. Bien que dans notre cas, notre modèle soit très léger et notre carte surdimensionnée, cette légèreté est très pertinente ainsi que pour la portabilité sur des microcontrôleurs moins puissants (et donc moins chers). C'est donc ce modèle que nous porterons sur la carte STM32 dans une logique d'optimisation.
 
 ## Ressources
 

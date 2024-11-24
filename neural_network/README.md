@@ -4,7 +4,7 @@ Dans ce répertoire, vous pourrez retrouver les programmes d'entraînement et le
 
 L'objectif du projet étant d'implémenter un modèle d'intelligence artificielle (IA) détectant des anomalies cardiaques dans une carte STM32 basse consommation, nous avions besoin d'un jeu de données (dataset). Les anomalies cardiaques étant difficilement descriptibles par un algorithme classique, une approche par IA est pertinente, car nous cherchons à détecter des motifs (patterns).
 
-Notre dataset, basé sur l'article ***"A lightweight convolutional neural network hardware implementation for wearable heart rate anomaly detection"*** de Minghong Gu, Yuejun Zhang, Yongzhong Wen, Guangpeng Ai, Huihong Zhang, Pengjun Wang et Guoqing Wang, est donc composé de **5000** signaux à **1 dimension** labellisés. Ces derniers sont des électrocardiogrammes classés selon les **5** pathologies suivantes :
+Notre dataset, basé sur l'article ***"[A lightweight convolutional neural network hardware implementation for wearable heart rate anomaly detection](./dataset_publications/ECGClassification1.pdf)"*** de Minghong Gu, Yuejun Zhang, Yongzhong Wen, Guangpeng Ai, Huihong Zhang, Pengjun Wang et Guoqing Wang, est donc composé de **5000** signaux à **1 dimension** labellisés. Ces derniers sont des électrocardiogrammes classés selon les **5** pathologies suivantes :
 
 **"A"** : contraction prématurée de l'oreillette  
     *971 échantillons dans le dataset*

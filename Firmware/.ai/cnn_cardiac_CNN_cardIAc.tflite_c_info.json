@@ -629,37 +629,37 @@
     }
   ],
   "environment": {
-    "device": null,
+    "device": "AMD64, Intel64 Family 6 Model 142 Stepping 10, GenuineIntel, Windows",
     "generated_model": {
-      "generated_time": "Sun Nov 24 15:49:04 2024",
+      "generated_time": "Sun Nov 24 16:56:14 2024",
       "model_files": [
         {
           "name": "cnn_cardiac_data_params.h",
-          "signature": "0x5c21132d138880cc4c2795d140c098ab"
+          "signature": "0xd087d390123bc6702ef2503aa6d3f555"
         },
         {
           "name": "cnn_cardiac_data_params.c",
-          "signature": "0xa4e066d94ab3a29005ac3ddeea694491"
+          "signature": "0xb112b0fb68ef2cbbef141cf9997fd65f"
         },
         {
           "name": "cnn_cardiac_data.h",
-          "signature": "0x9b0c1eb2dc3e4427a51788b5dbf0be97"
+          "signature": "0x168cd06d10d69acee9c94b8688832fc3"
         },
         {
           "name": "cnn_cardiac_data.c",
-          "signature": "0xd90735fa8962f6a433848d1715b93b88"
+          "signature": "0xd3fffd25dcf200752968b7730674aec7"
         },
         {
           "name": "cnn_cardiac_config.h",
-          "signature": "0xb9fadcfbada4c826e370b88c82d16fed"
+          "signature": "0x0920b2621ce1ee5204a0bbdd754425da"
         },
         {
           "name": "cnn_cardiac.h",
-          "signature": "0x8939fc403e2b7dd3bee3cbb3537c90a8"
+          "signature": "0x92c4b1df55936e927099bbd7b8119eac"
         },
         {
           "name": "cnn_cardiac.c",
-          "signature": "0xe50c0aea8049428d10a187f26da56dfa"
+          "signature": "0x8d588dbe30822ed282f547462773ee24"
         }
       ],
       "n_params": null,
@@ -667,11 +667,11 @@
       "size": null,
       "type": null
     },
-    "network_signature": "0x4963350a5ee7af85",
+    "network_signature": "0x3fc0c062ded7ee90",
     "test_name": "",
     "tools": [
       {
-        "arguments": "analyze --target stm32l4 --name cnn_cardiac -m C:/Users/Lenovo/Documents/Git_repos/cardIAc/neural_network/notebooks/models/CNN_cardIAc.tflite --compression lossless --verbosity 1 --allocate-inputs --allocate-outputs --workspace C:/Users/Lenovo/AppData/Local/Temp/mxAI_workspace61034304777620016845065894885148096 --output C:/Users/Lenovo/.stm32cubemx/cnn_cardiac_output",
+        "arguments": "validate --target stm32l4 --name cnn_cardiac -m C:/Users/Lenovo/Documents/Git_repos/cardIAc/neural_network/notebooks/models/CNN_cardIAc.tflite --compression lossless --verbosity 1 --allocate-inputs --allocate-outputs --workspace C:/Users/Lenovo/AppData/Local/Temp/mxAI_workspace61440882528880015297296021977935227 --output C:/Users/Lenovo/.stm32cubemx/cnn_cardiac_output --valoutput C:/Users/Lenovo/Documents/Git_repos/cardIAc/neural_network/notebooks/data/Y_val.npy --valinput C:/Users/Lenovo/Documents/Git_repos/cardIAc/neural_network/notebooks/data/X_val.npy",
         "environment": [
           "STATS_TYPE=X-CUBE-AI"
         ],
@@ -849,10 +849,10 @@
       ],
       "exec_time": {
         "counters": [],
-        "cycles": null,
-        "cycles_by_macc": null,
-        "duration_ms": null,
-        "percentage": null
+        "cycles": 0,
+        "cycles_by_macc": 0.0,
+        "duration_ms": 0.1290000028675422,
+        "percentage": 100.0
       },
       "id": 0,
       "inputs": [
@@ -875,10 +875,10 @@
           "description": "Conv2D",
           "exec_time": {
             "counters": [],
-            "cycles": null,
-            "cycles_by_macc": null,
-            "duration_ms": null,
-            "percentage": null
+            "cycles": 0,
+            "cycles_by_macc": 0.0,
+            "duration_ms": 0.026000000536441803,
+            "percentage": 20.155038727509737
           },
           "id": 9,
           "inputs": [
@@ -908,10 +908,10 @@
           "description": "Nonlinearity",
           "exec_time": {
             "counters": [],
-            "cycles": null,
-            "cycles_by_macc": null,
-            "duration_ms": null,
-            "percentage": null
+            "cycles": 0,
+            "cycles_by_macc": 0.0,
+            "duration_ms": 0.007000000216066837,
+            "percentage": 5.4263566360184265
           },
           "id": 10,
           "inputs": [
@@ -943,10 +943,10 @@
           "description": "Pool",
           "exec_time": {
             "counters": [],
-            "cycles": null,
-            "cycles_by_macc": null,
-            "duration_ms": null,
-            "percentage": null
+            "cycles": 0,
+            "cycles_by_macc": 0.0,
+            "duration_ms": 0.006000000052154064,
+            "percentage": 4.651162727736442
           },
           "id": 11,
           "inputs": [
@@ -982,10 +982,10 @@
           "description": "Conv2D",
           "exec_time": {
             "counters": [],
-            "cycles": null,
-            "cycles_by_macc": null,
-            "duration_ms": null,
-            "percentage": null
+            "cycles": 0,
+            "cycles_by_macc": 0.0,
+            "duration_ms": 0.009000000543892384,
+            "percentage": 6.9767444525823965
           },
           "id": 12,
           "inputs": [
@@ -1015,10 +1015,10 @@
           "description": "Nonlinearity",
           "exec_time": {
             "counters": [],
-            "cycles": null,
-            "cycles_by_macc": null,
-            "duration_ms": null,
-            "percentage": null
+            "cycles": 0,
+            "cycles_by_macc": 0.0,
+            "duration_ms": 0.0010000000474974513,
+            "percentage": 0.7751938180375515
           },
           "id": 13,
           "inputs": [
@@ -1050,10 +1050,10 @@
           "description": "Pool",
           "exec_time": {
             "counters": [],
-            "cycles": null,
-            "cycles_by_macc": null,
-            "duration_ms": null,
-            "percentage": null
+            "cycles": 0,
+            "cycles_by_macc": 0.0,
+            "duration_ms": 0.0020000000949949026,
+            "percentage": 1.550387636075103
           },
           "id": 14,
           "inputs": [
@@ -1082,10 +1082,10 @@
           "description": "Dense",
           "exec_time": {
             "counters": [],
-            "cycles": null,
-            "cycles_by_macc": null,
-            "duration_ms": null,
-            "percentage": null
+            "cycles": 0,
+            "cycles_by_macc": 0.0,
+            "duration_ms": 0.04800000041723251,
+            "percentage": 37.209301821891536
           },
           "id": 15,
           "inputs": [
@@ -1115,10 +1115,10 @@
           "description": "Nonlinearity",
           "exec_time": {
             "counters": [],
-            "cycles": null,
-            "cycles_by_macc": null,
-            "duration_ms": null,
-            "percentage": null
+            "cycles": 0,
+            "cycles_by_macc": 0.0,
+            "duration_ms": 0.0020000000949949026,
+            "percentage": 1.550387636075103
           },
           "id": 16,
           "inputs": [
@@ -1147,10 +1147,10 @@
           "description": "Dense",
           "exec_time": {
             "counters": [],
-            "cycles": null,
-            "cycles_by_macc": null,
-            "duration_ms": null,
-            "percentage": null
+            "cycles": 0,
+            "cycles_by_macc": 0.0,
+            "duration_ms": 0.0,
+            "percentage": 0.0
           },
           "id": 17,
           "inputs": [
@@ -1182,10 +1182,10 @@
           "description": "Nonlinearity",
           "exec_time": {
             "counters": [],
-            "cycles": null,
-            "cycles_by_macc": null,
-            "duration_ms": null,
-            "percentage": null
+            "cycles": 0,
+            "cycles_by_macc": 0.0,
+            "duration_ms": 0.02800000086426735,
+            "percentage": 21.705426544073706
           },
           "id": 18,
           "inputs": [
@@ -1220,12 +1220,12 @@
       0,
       0
     ],
-    "kernel_flash": 13298,
-    "kernel_ram": 3384,
-    "series": "stm32l4",
-    "toolchain": "arm-none-eabi-gcc (GNU Tools for STM32 12.3.rel1.20240612-1315) 12.3.1 20230626",
-    "toolchain_flash": 638,
-    "toolchain_ram": 0,
+    "kernel_flash": null,
+    "kernel_ram": null,
+    "series": "generic",
+    "toolchain": null,
+    "toolchain_flash": null,
+    "toolchain_ram": null,
     "weights": 8132
   },
   "memory_pools": [
@@ -1295,8 +1295,42 @@
   ],
   "power_estimates": [],
   "validation": {
-    "val_error": null,
-    "val_error_desc": null,
-    "val_metrics": []
+    "val_error": 7.754002995241649e-10,
+    "val_error_desc": "x-cross (l2r) #1",
+    "val_metrics": [
+      {
+        "acc": "100.00%",
+        "cos": 0.9999997615814209,
+        "desc": "HOST c-model #1",
+        "l2r": 0.0011596613330766559,
+        "mae": 0.0003561827470548451,
+        "mean": -9.244831566945777e-09,
+        "nse": 0.9999983219744109,
+        "rmse": 0.0005181547603569925,
+        "std": 0.0005181547603569925
+      },
+      {
+        "acc": "100.00%",
+        "cos": 0.9999997615814209,
+        "desc": "original model #1",
+        "l2r": 0.0011596617987379432,
+        "mae": 0.00035618292167782784,
+        "mean": -9.390350719229446e-09,
+        "nse": 0.9999983219729898,
+        "rmse": 0.0005181549931876361,
+        "std": 0.0005181549931876361
+      },
+      {
+        "acc": "100.00%",
+        "cos": 1.0,
+        "desc": "X-cross #1",
+        "l2r": 7.754002995241649e-10,
+        "mae": 1.964814144717053e-10,
+        "mean": 1.382737535582379e-10,
+        "nse": 1.0,
+        "rmse": 3.464608877568054e-10,
+        "std": 3.1767205532773346e-10
+      }
+    ]
   }
 }

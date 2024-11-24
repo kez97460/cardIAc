@@ -67,7 +67,7 @@
         }
     },
     "activations_alignment": 4,
-    "arguments": "analyze --target stm32l4 --name cnn_cardiac -m C:/Users/Lenovo/Documents/Git_repos/cardIAc/neural_network/notebooks/models/CNN_cardIAc.tflite --compression lossless --verbosity 1 --allocate-inputs --allocate-outputs --workspace C:/Users/Lenovo/AppData/Local/Temp/mxAI_workspace61034304777620016845065894885148096 --output C:/Users/Lenovo/.stm32cubemx/cnn_cardiac_output",
+    "arguments": "validate --target stm32l4 --name cnn_cardiac -m C:/Users/Lenovo/Documents/Git_repos/cardIAc/neural_network/notebooks/models/CNN_cardIAc.tflite --compression lossless --verbosity 1 --allocate-inputs --allocate-outputs --workspace C:/Users/Lenovo/AppData/Local/Temp/mxAI_workspace61440882528880015297296021977935227 --output C:/Users/Lenovo/.stm32cubemx/cnn_cardiac_output --valoutput C:/Users/Lenovo/Documents/Git_repos/cardIAc/neural_network/notebooks/data/Y_val.npy --valinput C:/Users/Lenovo/Documents/Git_repos/cardIAc/neural_network/notebooks/data/X_val.npy",
     "c_activations_count": 1,
     "c_arrays": [
         {
@@ -563,6 +563,13 @@
                 "forward_conv2d_if32of32wf32"
             ],
             "c_id": 0,
+            "exec_time": {
+                "counters": [],
+                "cycles": 0,
+                "cycles_by_macc": 0.0,
+                "duration_ms": 0.026000000536441803,
+                "percentage": 20.155038727509737
+            },
             "is_wrapped": "",
             "layer_type": "Conv2D",
             "m_id": 3,
@@ -596,6 +603,13 @@
                 "forward_relu"
             ],
             "c_id": 1,
+            "exec_time": {
+                "counters": [],
+                "cycles": 0,
+                "cycles_by_macc": 0.0,
+                "duration_ms": 0.007000000216066837,
+                "percentage": 5.4263566360184265
+            },
             "is_wrapped": "",
             "layer_type": "Nonlinearity",
             "m_id": 3,
@@ -626,6 +640,13 @@
                 "forward_mp"
             ],
             "c_id": 2,
+            "exec_time": {
+                "counters": [],
+                "cycles": 0,
+                "cycles_by_macc": 0.0,
+                "duration_ms": 0.006000000052154064,
+                "percentage": 4.651162727736442
+            },
             "is_wrapped": "",
             "layer_type": "Pool",
             "m_id": 5,
@@ -656,6 +677,13 @@
                 "forward_conv2d_if32of32wf32"
             ],
             "c_id": 3,
+            "exec_time": {
+                "counters": [],
+                "cycles": 0,
+                "cycles_by_macc": 0.0,
+                "duration_ms": 0.009000000543892384,
+                "percentage": 6.9767444525823965
+            },
             "is_wrapped": "",
             "layer_type": "Conv2D",
             "m_id": 10,
@@ -689,6 +717,13 @@
                 "forward_relu"
             ],
             "c_id": 4,
+            "exec_time": {
+                "counters": [],
+                "cycles": 0,
+                "cycles_by_macc": 0.0,
+                "duration_ms": 0.0010000000474974513,
+                "percentage": 0.7751938180375515
+            },
             "is_wrapped": "",
             "layer_type": "Nonlinearity",
             "m_id": 10,
@@ -719,6 +754,13 @@
                 "forward_mp"
             ],
             "c_id": 5,
+            "exec_time": {
+                "counters": [],
+                "cycles": 0,
+                "cycles_by_macc": 0.0,
+                "duration_ms": 0.0020000000949949026,
+                "percentage": 1.550387636075103
+            },
             "is_wrapped": "",
             "layer_type": "Pool",
             "m_id": 12,
@@ -749,6 +791,13 @@
                 "forward_dense"
             ],
             "c_id": 6,
+            "exec_time": {
+                "counters": [],
+                "cycles": 0,
+                "cycles_by_macc": 0.0,
+                "duration_ms": 0.04800000041723251,
+                "percentage": 37.209301821891536
+            },
             "is_wrapped": "",
             "layer_type": "Dense",
             "m_id": 14,
@@ -782,6 +831,13 @@
                 "forward_relu"
             ],
             "c_id": 7,
+            "exec_time": {
+                "counters": [],
+                "cycles": 0,
+                "cycles_by_macc": 0.0,
+                "duration_ms": 0.0020000000949949026,
+                "percentage": 1.550387636075103
+            },
             "is_wrapped": "",
             "layer_type": "Nonlinearity",
             "m_id": 14,
@@ -812,6 +868,13 @@
                 "forward_dense"
             ],
             "c_id": 8,
+            "exec_time": {
+                "counters": [],
+                "cycles": 0,
+                "cycles_by_macc": 0.0,
+                "duration_ms": 0.0,
+                "percentage": 0.0
+            },
             "is_wrapped": "",
             "layer_type": "Dense",
             "m_id": 15,
@@ -845,6 +908,13 @@
                 "forward_sm"
             ],
             "c_id": 9,
+            "exec_time": {
+                "counters": [],
+                "cycles": 0,
+                "cycles_by_macc": 0.0,
+                "duration_ms": 0.02800000086426735,
+                "percentage": 21.705426544073706
+            },
             "is_wrapped": "",
             "layer_type": "Nonlinearity",
             "m_id": 16,
@@ -884,7 +954,13 @@
         ]
     },
     "data_alignment": 4,
-    "date_time": "Sun Nov 24 15:49:04 2024",
+    "date_time": "Sun Nov 24 16:56:14 2024",
+    "exec_time": {
+        "cycles": 0,
+        "cycles_by_macc": 0.0,
+        "device": "AMD64, Intel64 Family 6 Model 142 Stepping 10, GenuineIntel, Windows",
+        "duration_ms": 0.1290000028675422
+    },
     "inputs": [
         "serving_default_input_layer_10_output"
     ],
@@ -895,12 +971,7 @@
             0,
             0
         ],
-        "kernel_flash": 13298,
-        "kernel_ram": 3384,
-        "series": "stm32l4",
-        "toolchain": "arm-none-eabi-gcc (GNU Tools for STM32 12.3.rel1.20240612-1315) 12.3.1 20230626",
-        "toolchain_flash": 638,
-        "toolchain_ram": 0,
+        "series": "generic",
         "weights": 8132
     },
     "memory_pools": [],

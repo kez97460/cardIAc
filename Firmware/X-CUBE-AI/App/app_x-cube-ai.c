@@ -54,13 +54,13 @@
 #include "app_x-cube-ai.h"
 #include "main.h"
 #include "ai_datatypes_defines.h"
-#include "pca_cardiac.h"
-#include "pca_cardiac_data.h"
+#include "cnn_cardiac.h"
+#include "cnn_cardiac_data.h"
 
 /* USER CODE BEGIN includes */
 extern UART_HandleTypeDef huart2;
 
-#define BYTES_INPUT 10*4
+#define BYTES_INPUT 181*4
 #define TIMEOUT 1000
 #define SYNCHRONISATION 0xAB
 #define ACKNOWLEDGE 0xCD
@@ -71,24 +71,24 @@ void synchronize_UART(void);
 
 /* IO buffers ----------------------------------------------------------------*/
 
-#if !defined(AI_PCA_CARDIAC_INPUTS_IN_ACTIVATIONS)
-AI_ALIGNED(4) ai_i8 data_in_1[AI_PCA_CARDIAC_IN_1_SIZE_BYTES];
-ai_i8* data_ins[AI_PCA_CARDIAC_IN_NUM] = {
+#if !defined(AI_CNN_CARDIAC_INPUTS_IN_ACTIVATIONS)
+AI_ALIGNED(4) ai_i8 data_in_1[AI_CNN_CARDIAC_IN_1_SIZE_BYTES];
+ai_i8* data_ins[AI_CNN_CARDIAC_IN_NUM] = {
 data_in_1
 };
 #else
-ai_i8* data_ins[AI_PCA_CARDIAC_IN_NUM] = {
+ai_i8* data_ins[AI_CNN_CARDIAC_IN_NUM] = {
 NULL
 };
 #endif
 
-#if !defined(AI_PCA_CARDIAC_OUTPUTS_IN_ACTIVATIONS)
-AI_ALIGNED(4) ai_i8 data_out_1[AI_PCA_CARDIAC_OUT_1_SIZE_BYTES];
-ai_i8* data_outs[AI_PCA_CARDIAC_OUT_NUM] = {
+#if !defined(AI_CNN_CARDIAC_OUTPUTS_IN_ACTIVATIONS)
+AI_ALIGNED(4) ai_i8 data_out_1[AI_CNN_CARDIAC_OUT_1_SIZE_BYTES];
+ai_i8* data_outs[AI_CNN_CARDIAC_OUT_NUM] = {
 data_out_1
 };
 #else
-ai_i8* data_outs[AI_PCA_CARDIAC_OUT_NUM] = {
+ai_i8* data_outs[AI_CNN_CARDIAC_OUT_NUM] = {
 NULL
 };
 #endif
@@ -96,13 +96,13 @@ NULL
 /* Activations buffers -------------------------------------------------------*/
 
 AI_ALIGNED(32)
-static uint8_t pool0[AI_PCA_CARDIAC_DATA_ACTIVATION_1_SIZE];
+static uint8_t pool0[AI_CNN_CARDIAC_DATA_ACTIVATION_1_SIZE];
 
 ai_handle data_activations0[] = {pool0};
 
 /* AI objects ----------------------------------------------------------------*/
 
-static ai_handle pca_cardiac = AI_HANDLE_NULL;
+static ai_handle cnn_cardiac = AI_HANDLE_NULL;
 
 static ai_buffer* ai_input;
 static ai_buffer* ai_output;
@@ -125,37 +125,37 @@ static int ai_boostrap(ai_handle *act_addr)
   ai_error err;
 
   /* Create and initialize an instance of the model */
-  err = ai_pca_cardiac_create_and_init(&pca_cardiac, act_addr, NULL);
+  err = ai_cnn_cardiac_create_and_init(&cnn_cardiac, act_addr, NULL);
   if (err.type != AI_ERROR_NONE) {
-    ai_log_err(err, "ai_pca_cardiac_create_and_init");
+    ai_log_err(err, "ai_cnn_cardiac_create_and_init");
     return -1;
   }
 
-  ai_input = ai_pca_cardiac_inputs_get(pca_cardiac, NULL);
-  ai_output = ai_pca_cardiac_outputs_get(pca_cardiac, NULL);
+  ai_input = ai_cnn_cardiac_inputs_get(cnn_cardiac, NULL);
+  ai_output = ai_cnn_cardiac_outputs_get(cnn_cardiac, NULL);
 
-#if defined(AI_PCA_CARDIAC_INPUTS_IN_ACTIVATIONS)
+#if defined(AI_CNN_CARDIAC_INPUTS_IN_ACTIVATIONS)
   /*  In the case where "--allocate-inputs" option is used, memory buffer can be
    *  used from the activations buffer. This is not mandatory.
    */
-  for (int idx=0; idx < AI_PCA_CARDIAC_IN_NUM; idx++) {
+  for (int idx=0; idx < AI_CNN_CARDIAC_IN_NUM; idx++) {
 	data_ins[idx] = ai_input[idx].data;
   }
 #else
-  for (int idx=0; idx < AI_PCA_CARDIAC_IN_NUM; idx++) {
+  for (int idx=0; idx < AI_CNN_CARDIAC_IN_NUM; idx++) {
 	  ai_input[idx].data = data_ins[idx];
   }
 #endif
 
-#if defined(AI_PCA_CARDIAC_OUTPUTS_IN_ACTIVATIONS)
+#if defined(AI_CNN_CARDIAC_OUTPUTS_IN_ACTIVATIONS)
   /*  In the case where "--allocate-outputs" option is used, memory buffer can be
    *  used from the activations buffer. This is no mandatory.
    */
-  for (int idx=0; idx < AI_PCA_CARDIAC_OUT_NUM; idx++) {
+  for (int idx=0; idx < AI_CNN_CARDIAC_OUT_NUM; idx++) {
 	data_outs[idx] = ai_output[idx].data;
   }
 #else
-  for (int idx=0; idx < AI_PCA_CARDIAC_OUT_NUM; idx++) {
+  for (int idx=0; idx < AI_CNN_CARDIAC_OUT_NUM; idx++) {
 	ai_output[idx].data = data_outs[idx];
   }
 #endif
@@ -167,10 +167,10 @@ static int ai_run(void)
 {
   ai_i32 batch;
 
-  batch = ai_pca_cardiac_run(pca_cardiac, ai_input, ai_output);
+  batch = ai_cnn_cardiac_run(cnn_cardiac, ai_input, ai_output);
   if (batch != 1) {
-    ai_log_err(ai_pca_cardiac_get_error(pca_cardiac),
-        "ai_pca_cardiac_run");
+    ai_log_err(ai_cnn_cardiac_get_error(cnn_cardiac),
+        "ai_cnn_cardiac_run");
     return -1;
   }
 
@@ -299,7 +299,7 @@ void MX_X_CUBE_AI_Process(void)
 	uint8_t *in_data = ai_input[0].data;
 	uint8_t *out_data = ai_output[0].data;
 	synchronize_UART();
-	if (pca_cardiac) {
+	if (cnn_cardiac) {
 	do {
 	  /* 1 - acquire and pre-process input data */
 	  res = acquire_and_process_data(in_data);

@@ -2,7 +2,7 @@ import serial
 import numpy as np
 import time
 
-PORT = "COM6"
+PORT = "COM12"
 NUM_CLASSES = 5
 
 def synchronise_UART(serial_port):
@@ -34,8 +34,8 @@ def outputsToInt(output):
     return float_values
 
 if __name__ == '__main__':
-    X_test = np.load("../neural_network/dataset_publications/MLP/STM32Inputs/X_test.npy")
-    Y_test = np.load("../neural_network/Notebooks_Kez/Y_test_STM32.npy")
+    X_test = np.load("neural_network/notebooks/data/X_val.npy")
+    Y_test = np.load("neural_network/notebooks/data/Y_val.npy")
 
     iterations = 100
 

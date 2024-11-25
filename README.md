@@ -1,10 +1,19 @@
 # cardIAc
 Projet IA embarquée ISMIN 3A - Kézia Marcou et Lïam Lotte
 
-Etat du projet :
-- Lecture de la bibliographie du sujet - Done
-- Développement du Réseau MLP - [Done](https://github.com/kez97460/cardIAc/blob/main/neural_network/notebooks/MLP.ipynb)
-- Développement du Réseau CNN - [Done](https://github.com/kez97460/cardIAc/blob/main/neural_network/notebooks/CNN.ipynb)
-- Mise en place sur STM32 - [Done](https://github.com/kez97460/cardIAc/tree/main/Firmware)
-- Adversarial Attack - WIP
-- Bit Flip Attack - [Done (sur repertoire externe)](https://github.com/Zeug555/cardIAc_bit_flip_attack)
+## Présentation du projet
+
+Ce projet a pour objectif de développer un réseau de neurones capable de détecter des anomalies cardiaques et de faire fonctionner ce modèle sur un microcontrôleur STM32. 
+
+Il comporte aussi deux exemples d'attaques sur le réseau de neurones. 
+
+## Sommaire de la documentation
+
+La documentation relative aux différentes parties du projet se situe dans leurs dossiers respectifs. 
+
+En voici un sommaire : 
+- [construction des modèles](./neural_network/README.md)
+- [génération et test du firmware STM32](./Firmware/README.md)
+- [attaque bit-flip](https://github.com/Zeug555/cardIAc_bit_flip_attack) (repo séparé)
+- [attaque adversarial](./adversarial/README.md)
+

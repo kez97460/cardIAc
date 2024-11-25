@@ -9,7 +9,7 @@ Il comporte aussi deux exemples d'attaques sur le réseau de neurones.
 
 ## Sommaire de la documentation
 
-La documentation relative aux différentes parties du projet se situe dans leurs dossiers respectifs. 
+La documentation relative aux différentes parties du projet se situe dans les README de leurs dossiers respectifs. 
 
 En voici un sommaire : 
 - [construction des modèles](./neural_network/README.md)
